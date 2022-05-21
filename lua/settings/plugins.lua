@@ -23,13 +23,15 @@ packer.init {
 
 return require("packer").startup(function()
   use "wbthomason/packer.nvim"
-
+  
+  -- Themes
   use {
     "Mofiqul/dracula.nvim",
     "folke/tokyonight.nvim",
     "rmehri01/onenord.nvim"
   }
 
+  -- LSP stuff
   use {
     "neovim/nvim-lspconfig",
     "williamboman/nvim-lsp-installer"
@@ -41,7 +43,7 @@ return require("packer").startup(function()
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-cmdline",
     "hrsh7th/nvim-cmp",
-    "hrsh7th/cmp-nvim-lsp-signature-help",
+    "ray-x/lsp_signature.nvim",
 
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip"
@@ -52,27 +54,29 @@ return require("packer").startup(function()
     "folke/trouble.nvim", config = function() require("trouble").setup({ icons = false }) end
   }
 
+  -- Utils
   use {
     "nvim-treesitter/nvim-treesitter", run = ":TSUpdate",
     "lukas-reineke/indent-blankline.nvim", config = require "settings.indent" ,
     "lewis6991/gitsigns.nvim",
     "windwp/nvim-autopairs",
+    "rcarriga/nvim-notify",
+    "numToStr/Comment.nvim",
+    "JoosepAlviste/nvim-ts-context-commentstring",
   }
 
+  -- Navigation and Status
   use {
     "nvim-telescope/telescope.nvim",
     "nvim-lualine/lualine.nvim",
     "kyazdani42/nvim-tree.lua",
-    "akinsho/bufferline.nvim", tag = "v2.*"
+    "akinsho/bufferline.nvim", tag = "v2.*",
   }
-
-  use "rcarriga/nvim-notify"
 
   -- Dependencies
   use {
-    'kyazdani42/nvim-web-devicons',
-    'nvim-lua/plenary.nvim'
+    "kyazdani42/nvim-web-devicons",
+    "nvim-lua/plenary.nvim"
   }
-
 end)
 

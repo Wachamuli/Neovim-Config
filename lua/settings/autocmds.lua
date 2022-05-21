@@ -10,10 +10,10 @@ autocmd("Filetype", {
   end,
 })
 
-autocmd("Filetype", {
-  pattern = "python",
-  callback = function()
-    vim.api.nvim_set_keymap("n", "<space>f", ":Format<CR>", { noremap = false, silent = false })
-  end
-})
+--autocmd("Filetype", {
+  --pattern = "NvimTree",
+  --callback = function()
+    --vim.cmd [[setlocal fillchars+=vert:\ ]]
+  --end
+--})
 

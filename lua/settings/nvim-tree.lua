@@ -87,7 +87,7 @@ nvimtree.setup {
     width = 30,
     height = 30,
     hide_root_folder = true,
-    side = "right",
+    side = "left",
     number = false,
     relativenumber = false,
     signcolumn = "yes",
@@ -115,14 +115,104 @@ nvimtree.setup {
     icons = {
       webdev_colors = true,
     },
-      --indent_markers = {
-       --   enable = true,
-         -- icons = {
-          --    corner = "└ ",
-           --   edge = "│ ",
-            --  none = "  ",
-          -- },
-      -- },
+--    indent_markers = {
+  --    enable = true,
+    --  icons = {
+      --    corner = "└ ",
+        --  edge = "│ ",
+         -- none = "  ",
+     -- },
+    --},
   },
 }
 
+require("nvim-web-devicons").set_icon {
+  zsh = {
+    icon = "",
+    name = "zsh"
+  },
+  c = {
+     icon = "",
+     name = "c",
+  },
+  css = {
+     icon = "",
+     name = "css",
+  },
+  deb = {
+     icon = "",
+     name = "deb",
+  },
+  Dockerfile = {
+     icon = "",
+     name = "Dockerfile",
+  },
+  html = {
+     icon = "",
+     name = "html",
+  },
+  js = {
+     icon = "",
+     name = "js",
+  },
+  lock = {
+     icon = "",
+     name = "lock",
+  },
+  mp3 = {
+     icon = "",
+     name = "mp3",
+  },
+  mp4 = {
+     icon = "",
+     name = "mp4",
+  },
+  out = {
+     icon = "",
+     name = "out",
+  },
+  ["robots.txt"] = {
+     icon = "ﮧ",
+     name = "robots",
+  },
+  toml = {
+     icon = "",
+     name = "toml",
+  },
+  ts = {
+     icon = "ﯤ",
+     name = "ts",
+  },
+  ttf = {
+     icon = "",
+     name = "TrueTypeFont",
+  },
+  rb = {
+     icon = "",
+     name = "rb",
+  },
+  rpm = {
+     icon = "",
+     name = "rpm",
+  },
+  vue = {
+     icon = "﵂ ",
+     name = "vue",
+  },
+  woff = {
+     icon = "",
+     name = "WebOpenFontFormat",
+  },
+  woff2 = {
+     icon = "",
+     name = "WebOpenFontFormat2",
+  },
+  xz = {
+     icon = "",
+     name = "xz",
+  },
+  zip = {
+     icon = "",
+     name = "zip",
+  },
+};

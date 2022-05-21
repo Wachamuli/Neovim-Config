@@ -40,10 +40,10 @@ local options = {
 
 vim.opt.shortmess:append("c")
 vim.cmd "set whichwrap+=<,>,[,],h,l"
-vim.cmd [[set fillchars+=vert:\ ]]
 vim.cmd "set iskeyword+=-"
+vim.cmd "set nohlsearch"
 vim.cmd "colorscheme onenord"
-vim.cmd "hi EndOfBuffer guibg=none"
+-- vim.cmd "hi EndOfBuffer guifg=bg"
 
 for k, v in pairs(options) do
   vim.opt[k] = v
@@ -51,99 +51,7 @@ end
 
 require("lualine").setup {
   options = {
-    theme = 'onenord'
+    theme = "onenord"
   }
 }
 
-require("nvim-web-devicons").set_icon {
-  zsh = {
-    icon = "",
-    color = "#428850",
-    cterm_color = "65",
-    name = "Zsh"
-  },
-  c = {
-     icon = "",
-     name = "c",
-  },
-  css = {
-     icon = "",
-     name = "css",
-  },
-  deb = {
-     icon = "",
-     name = "deb",
-  },
-  Dockerfile = {
-     icon = "",
-     name = "Dockerfile",
-  },
-  html = {
-     icon = "",
-     name = "html",
-  },
-  js = {
-     icon = "",
-     name = "js",
-  },
-  lock = {
-     icon = "",
-     name = "lock",
-  },
-  mp3 = {
-     icon = "",
-     name = "mp3",
-  },
-  mp4 = {
-     icon = "",
-     name = "mp4",
-  },
-  out = {
-     icon = "",
-     name = "out",
-  },
-  ["robots.txt"] = {
-     icon = "ﮧ",
-     name = "robots",
-  },
-  toml = {
-     icon = "",
-     name = "toml",
-  },
-  ts = {
-     icon = "ﯤ",
-     name = "ts",
-  },
-  ttf = {
-     icon = "",
-     name = "TrueTypeFont",
-  },
-  rb = {
-     icon = "",
-     name = "rb",
-  },
-  rpm = {
-     icon = "",
-     name = "rpm",
-  },
-  vue = {
-     icon = "﵂ ",
-     name = "vue",
-  },
-  woff = {
-     icon = "",
-     name = "WebOpenFontFormat",
-  },
-  woff2 = {
-     icon = "",
-     name = "WebOpenFontFormat2",
-  },
-  xz = {
-     icon = "",
-     name = "xz",
-  },
-  zip = {
-     icon = "",
-     name = "zip",
-  },
-};

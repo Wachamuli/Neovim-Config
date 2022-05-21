@@ -15,6 +15,13 @@ local conditions = {
   end,
 }
 
+local function capitalize(filetype)
+  local upperCharacter = string.upper(string.sub(filetype, 1, 1))
+  local rest = string.sub(filetype, 2, string.len(filetype))
+  local formatted = string.format("%s%s", upperCharacter, rest) 
+  return formatted
+end
+
 
 local config = {
   options = {
@@ -24,13 +31,13 @@ local config = {
   },
   sections = {
     lualine_a = {
-      { "mode", separator = { right = '', left = '' } },
+     { "mode", separator = { right = '' }},
     },
     lualine_b = {},
     lualine_c = {},
-    lualine_y = {},
-    lualine_z = {},
     lualine_x = {},
+    lualine_y = { {"branch", icon = "" }, {"location", icon = "" } },
+    lualine_z = {},
   },
   inactive_sections = {
     lualine_a = {},
@@ -61,7 +68,7 @@ end
 
 ins_left {
   "filetype",
-  fmt = string.upper,
+  fmt = capitalize,
   icons_enabled = true,
 }
 
@@ -114,17 +121,6 @@ ins_right {
   end,
   cond = conditions.check_git_workspace,
   padding = 0,
-}
-
-ins_right {
-  icon = "",
-  "branch",
-  cond = conditions.check_git_workspace,
-}
-
-ins_right { 
-  "location", 
-  icon = "" 
 }
 
 -- Inactive
