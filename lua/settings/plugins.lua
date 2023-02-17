@@ -26,15 +26,14 @@ return require("packer").startup(function()
   
   -- Themes
   use {
-    "Mofiqul/dracula.nvim",
-    "folke/tokyonight.nvim",
-    "rmehri01/onenord.nvim"
+    "rmehri01/onenord.nvim",
+    "navarasu/onedark.nvim",
   }
 
   -- LSP stuff
   use {
     "neovim/nvim-lspconfig",
-    "williamboman/nvim-lsp-installer"
+    "williamboman/nvim-lsp-installer",
   }
 
   use {
@@ -46,31 +45,31 @@ return require("packer").startup(function()
     "ray-x/lsp_signature.nvim",
 
     "L3MON4D3/LuaSnip",
-    "saadparwaiz1/cmp_luasnip"
-  }
-
-  use {
-    "mhartington/formatter.nvim",
-    "folke/trouble.nvim", config = function() require("trouble").setup({ icons = false }) end
+    "saadparwaiz1/cmp_luasnip",
   }
 
   -- Utils
   use {
     "nvim-treesitter/nvim-treesitter", run = ":TSUpdate",
-    "lukas-reineke/indent-blankline.nvim", config = require "settings.indent" ,
+    "mhartington/formatter.nvim",
+  }
+
+  use {
+    "lukas-reineke/indent-blankline.nvim", config = require "settings.indent",
     "lewis6991/gitsigns.nvim",
     "windwp/nvim-autopairs",
     "rcarriga/nvim-notify",
     "numToStr/Comment.nvim",
     "JoosepAlviste/nvim-ts-context-commentstring",
   }
-
+  
   -- Navigation and Status
   use {
     "nvim-telescope/telescope.nvim",
     "nvim-lualine/lualine.nvim",
     "kyazdani42/nvim-tree.lua",
     "akinsho/bufferline.nvim", tag = "v2.*",
+    "numToStr/FTerm.nvim",
   }
 
   -- Dependencies

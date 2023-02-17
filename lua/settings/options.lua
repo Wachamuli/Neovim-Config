@@ -31,27 +31,24 @@ local options = {
   signcolumn = "yes",                      -- always show the sign column, otherwise it would shift the text each time
   wrap = false,                            -- display lines as one long line
   timeoutlen = 1000,
-
+  hlsearch = false,
+  autoread = true,
   scrolloff = 8,                           -- is one of my fav
   sidescrolloff = 8,
-
-  guifont = "monospace:h17",               -- the font used in graphical neovim applications
 }
 
 vim.opt.shortmess:append("c")
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd "set iskeyword+=-"
-vim.cmd "set nohlsearch"
-vim.cmd "colorscheme onenord"
--- vim.cmd "hi EndOfBuffer guifg=bg"
+vim.cmd "colorscheme onedark"
+
+require("lualine").setup {
+  options = {
+    theme = "onedark"
+  }
+}
 
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
-
-require("lualine").setup {
-  options = {
-    theme = "onenord"
-  }
-}
 

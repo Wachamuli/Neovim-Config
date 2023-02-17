@@ -35,7 +35,7 @@ local config = {
     },
     lualine_b = {},
     lualine_c = {},
-    lualine_x = {},
+    lualine_x = { { "diff", symbols = { added = ' ', modified = ' ', removed = ' '} } },
     lualine_y = { {"branch", icon = "" }, {"location", icon = "" } },
     lualine_z = {},
   },
@@ -94,12 +94,6 @@ ins_left {
   end,
   icon = " ",
   cond = conditions.buffer_not_empty,
-}
-
-ins_left {
-  "file",
-  sources = { "nvim_diagnostic" },
-  symbols = { error = " ", warn = " ", info = " ", hint = " " },
 }
 
 ins_left {

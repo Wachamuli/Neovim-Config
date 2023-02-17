@@ -12,15 +12,13 @@ require("nvim-lsp-installer").setup({
 })
 
 local function lsp_keymaps(bufnr)
-  local opts = { noremap=true, silent=true }
+  local opts = { noremap = true, silent = true }
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  vim.api.nvim_set_keymap("n", "gr", "<cmd>Trouble lsp_references<cr>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  vim.api.nvim_set_keymap("n", "gx", "<cmd>Trouble document_diagnostics<cr>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
@@ -30,31 +28,31 @@ local function lsp_keymaps(bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
 end
 
+-- FIXME: It's not working
 local function lsp_highlight_document(client)
-  if client.resolved_capabilities.document_highlight then
-    vim.api.nvim_exec(
-      [[
-        augroup lsp_document_highlight
-          autocmd! * <buffer>
-          autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-          autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-        augroup END
-      ]],
-      false
-    )
-  end
-end
-
-local function show_diagnostic_on_hover(client)
-  if client.resolved_capabilities.document_highlight then
-    vim.api.nvim_exec(
-      [[
-        augroup show_diagnostic_on_hover 
-          autocmd CursorHold * lua vim.diagnostic.open_float()
-        augroup END
-      ]],
-      false
-    )
+  if client.server_capabilities.documentHighlightProvider then
+    vim.cmd [[
+      hi! LspReferenceRead cterm=underline
+      hi! LspReferenceText cterm=underline
+      hi! LspReferenceWrite cterm=underline
+    ]]
+    vim.api.nvim_create_augroup('lsp_document_highlight', {
+      clear = false
+    })
+    vim.api.nvim_clear_autocmds({
+      buffer = bufnr,
+      group = 'lsp_document_highlight',
+    })
+    vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+      group = 'lsp_document_highlight',
+      buffer = bufnr,
+      callback = vim.lsp.buf.document_highlight,
+    })
+    vim.api.nvim_create_autocmd('CursorMoved', {
+      group = 'lsp_document_highlight',
+      buffer = bufnr,
+      callback = vim.lsp.buf.clear_references,
+    })
   end
 end
 
@@ -76,7 +74,6 @@ for _, lsp in pairs(servers) do
       lsp_keymaps(bufnr)
       formatting_callback(client, bufnr)
       lsp_highlight_document(client)
-      show_diagnostic_on_hover(client)
       require("lsp_signature").on_attach()
     end,
     flags = { debounce_text_changes = 150 }

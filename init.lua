@@ -7,6 +7,7 @@ require("settings.telescope")
 require("settings.nvim-tree")
 require("settings.bufferline")
 require("settings.lualine")
+require("settings.floatingterminal")
 
 require("settings.autopairs")
 require("settings.comment")

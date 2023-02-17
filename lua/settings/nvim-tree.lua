@@ -10,41 +10,43 @@ keymap("n", "<Space>e", "<cmd>:NvimTreeToggle<CR>", opts)
 -- nnoremap <leader>r :NvimTreeRefresh<CR>
 -- nnoremap <leader>n :NvimTreeFindFile<CR>
 
-vim.g.nvim_tree_special_files = {}
-
-vim.g.nvim_tree_icons = {
-  default = "",
-  symlink = "",
-
-  git = {
-    deleted = "",
-    ignored = "◌",
-    renamed = "➜",
-    staged = "✓",
-    unmerged = "",
-    unstaged = "✗",
-    untracked = "★",
-  },
-
-  folder = {
-    arrow_open = "",
-    arrow_closed = "",
-    default = "",
-    open = "",
-    empty = "",
-    empty_open = "",
-    symlink = "",
-  },
-}
-
-vim.g.nvim_tree_show_icons = {
-  git = 1,
-  folders = 1,
-  files = 1,
-  folder_arrows = 1,
-}
-
 nvimtree.setup {
+  renderer = {
+    icons = {
+      show = {
+        git = 1,
+        folders = 1,
+        files = 1,
+        folder_arrows = 1,
+      },
+      glyphs = {
+        tree_icons = {
+          default = "",
+          symlink = "",
+
+          git = {
+            deleted = "",
+            ignored = "◌",
+            renamed = "➜",
+            staged = "✓",
+            unmerged = "",
+            unstaged = "✗",
+            untracked = "★",
+          },
+
+          folder = {
+            arrow_open = "",
+            arrow_closed = "",
+            default = "",
+            open = "",
+            empty = "",
+            empty_open = "",
+            symlink = "",
+          },
+        },
+      }
+    }
+  },
   auto_reload_on_write = true,
   disable_netrw = true,
   sort_by = "name",
@@ -196,7 +198,7 @@ require("nvim-web-devicons").set_icon {
      name = "rpm",
   },
   vue = {
-     icon = "﵂ ",
+     icon = "﵂",
      name = "vue",
   },
   woff = {

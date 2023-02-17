@@ -6,7 +6,7 @@ end
 bufferline.setup {
   options = {
     offsets = { { filetype = "NvimTree", padding = 1 } },
-    separator_style = {"|", "|"},
+    separator_style = {"", ""},
     indicator_icon = "",
     buffer_close_icon = "",
     modified_icon = "",
@@ -40,20 +40,20 @@ bufferline.setup {
 
     custom_filter = function(buf_number)
        -- Func to filter out our managed/persistent split terms
-       local present_type, type = pcall(function()
+      local present_type, type = pcall(function()
         return vim.api.nvim_buf_get_var(buf_number, "term_type")
-       end)
+      end)
 
-       if present_type then
-          if type == "vert" then
-             return false
-          elseif type == "hori" then
-             return false
-          end
+      if present_type then
+        if type == "vert" then
+           return false
+        elseif type == "hori" then
+           return false
+        end
           return true
-       end
+      end
 
-       return true
+      return true
     end,
   },
 }
