@@ -1,4 +1,12 @@
 return {
+  { -- Theme
+    "AlexvZyl/nordic.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+        require("nordic").load()
+    end
+  },
   { -- LSP
     "neovim/nvim-lspconfig",
     lazy = false,
@@ -25,12 +33,24 @@ return {
         config.setup(opts)
     end
   },
-  { -- Theme
-    "AlexvZyl/nordic.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-        require("nordic").load()
-    end
-  }
+ { -- Completion
+   "hrsh7th/nvim-cmp",
+   config = function()
+     require("wacha.packer.configs.cmp")
+   end,
+   dependencies = {
+     "hrsh7th/cmp-nvim-lsp",
+     "hrsh7th/cmp-buffer",
+     "hrsh7th/cmp-path",
+     "hrsh7th/cmp-cmdline",
+     "hrsh7th/cmp-omni",
+     "saadparwaiz1/cmp_luasnip",
+     {
+         "L3MON4D3/LuaSnip",
+         version = "v2.*",
+         dependencies = { "rafamadriz/friendly-snippets" },
+         build = "make install_jsregexp",
+     },
+   }
+  },
 }
