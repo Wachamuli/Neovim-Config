@@ -1,5 +1,6 @@
   -- Set up nvim-cmp.
-  local cmp = require'cmp'
+  local cmp = require("cmp")
+  local completion_icons = require("wacha.settings").completion_icons
 
   cmp.setup({
     snippet = {
@@ -11,16 +12,31 @@
         -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
       end,
     },
+    completion = {
+       completeopt = "menu,menuone,noinsert",
+       keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
+       keyword_length= 1
+    },
+    formatting = {
+       fields = { "abbr", "kind", "menu" },
+       format = function(_, vim_item)
+          vim_item.menu = vim_item.kind
+          vim_item.kind = completion_icons[vim_item.kind]
+          return vim_item
+       end
+    },
     window = {
        completion = cmp.config.window.bordered(),
        documentation = cmp.config.window.bordered(),
     },
     mapping = cmp.mapping.preset.insert({
-      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ['<C-Space>'] = cmp.mapping.complete(),
-      ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+      ["<A-j>"] = cmp.mapping.select_next_item(),
+      ["<A-k>"] = cmp.mapping.select_prev_item(),
+      ["<A-h>"] = cmp.mapping.scroll_docs(-4),
+      ["<A-l>"] = cmp.mapping.scroll_docs(4),
+      ["<C-Space>"] = cmp.mapping.complete(),
+      ["<C-e>"] = cmp.mapping.abort(),
+      ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
