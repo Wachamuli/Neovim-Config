@@ -31,10 +31,10 @@ local config = {
   },
   sections = {
     lualine_a = {
-     { "mode", separator = { right = '' }},
+     --{ "mode", separator = { right = '' }},
     },
     lualine_b = {},
-    lualine_c = {},
+    lualine_c = { { "filename" }},
     lualine_x = { { "diff", symbols = { added = ' ', modified = ' ', removed = ' '} } },
     lualine_y = { {"branch", icon = "" }, {"location", icon = "" } },
     lualine_z = {},
@@ -111,7 +111,7 @@ ins_left {
 -- Add components to right sections
 ins_right {
   function()
-    return "" --
+    return "" 
   end,
   cond = conditions.check_git_workspace,
   padding = 0,

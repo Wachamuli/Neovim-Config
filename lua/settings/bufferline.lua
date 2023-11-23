@@ -7,7 +7,7 @@ bufferline.setup {
   options = {
     offsets = { { filetype = "NvimTree", padding = 1 } },
     separator_style = {"", ""},
-    indicator_icon = "",
+    indicator = { icon = "" },
     buffer_close_icon = "",
     modified_icon = "",
     left_trunc_marker = "",

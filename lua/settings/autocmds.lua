@@ -1,12 +1,12 @@
-local autocmd = vim.api.nvim_create_autocmd
+--local autocmd = vim.api.nvim_create_autocmd
 
-autocmd(
-  { "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" },
-  { 
-    pattern = "*", 
-    command = "if mode() != 'c' | checktime | endif",
-  }
-)
+--autocmd(
+--  { "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" },
+--  { 
+--    pattern = "*", 
+--    command = "if mode() != 'c' | checktime | endif",
+--  }
+--)
 
 autocmd("Filetype", {
   pattern = "cs",

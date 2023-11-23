@@ -40,13 +40,6 @@ local options = {
 vim.opt.shortmess:append("c")
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd "set iskeyword+=-"
-vim.cmd "colorscheme onedark"
-
-require("lualine").setup {
-  options = {
-    theme = "onedark"
-  }
-}
 
 for k, v in pairs(options) do
   vim.opt[k] = v

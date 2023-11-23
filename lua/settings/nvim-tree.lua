@@ -1,7 +1,7 @@
 local ok, nvimtree = pcall(require, "nvim-tree")
 
 if not ok then
-    return
+  return
 end
 
 local keymap = vim.api.nvim_set_keymap
@@ -87,9 +87,8 @@ nvimtree.setup {
   },
   view = {
     width = 30,
-    height = 30,
     hide_root_folder = true,
-    side = "left",
+    side = "right",
     number = false,
     relativenumber = false,
     signcolumn = "yes",

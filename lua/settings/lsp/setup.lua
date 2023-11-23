@@ -1,15 +1,14 @@
-local servers = { "pyright", "rust_analyzer", "tsserver", "omnisharp" }
-
-require("nvim-lsp-installer").setup({
-  automatic_installation = true,
-  ui = {
-    icons = {
-        server_installed = "✓",
-        server_pending = "➜",
-        server_uninstalled = "✗"
+require("mason").setup({
+    ui = {
+        icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
+        }
     }
-  }
 })
+
+local servers = { "pyright", "rust_analyzer", "tsserver", "omnisharp" }
 
 local function lsp_keymaps(bufnr)
   local opts = { noremap = true, silent = true }
