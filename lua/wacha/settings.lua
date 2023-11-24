@@ -1,10 +1,10 @@
 local settings = {}
 
-settings.colorscheme = "nordic"
+require("tokyonight").load() -- onedark, tokyonight
 
 -- use :MasonInstall <language_server> if server isn't available
 settings.lspservers = {
-  ["lua_ls"] = {},
+  ["lua_ls"] = {}, -- server specific configuration goes here
   ["rust_analyzer"] = {},
   ["pyright"] = {},
   ["tsserver"] = {},
@@ -39,5 +39,7 @@ settings.completion_icons = {
   Operator = "",
   TypeParameter = "",
 }
+
+settings.diagnostic_signs = { Error = "", Warn = "", Hint = "", Info = "" }
 
 return settings
