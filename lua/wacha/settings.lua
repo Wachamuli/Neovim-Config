@@ -1,6 +1,6 @@
 local settings = {}
 
-require("tokyonight").load() -- onedark, tokyonight
+require("onedark").load() -- onedark, tokyonight
 
 -- use :MasonInstall <language_server> if server isn't available
 settings.lspservers = {
@@ -13,33 +13,42 @@ settings.lspservers = {
 settings.treesitter = { "lua", "rust", "python", "typescript", }
 
 settings.completion_icons = {
-  Text = "",
-  Method = "m",
-  Function = "",
-  Constructor = "",
-  Field = "",
-  Variable = "",
-  Class = "",
-  Interface = " ",
-  Module = "",
-  Property = "",
-  Unit = "",
-  Value = "",
-  Enum = "",
-  Keyword = "",
-  Snippet = "",
-  Color = "",
-  File = "",
-  Reference = "",
-  Folder = "",
-  EnumMember = "",
-  Constant = "",
-  Struct = " ",
-  Event = "",
-  Operator = "",
-  TypeParameter = "",
+   Array = " ",
+    Boolean = " ",
+    Class = " ",
+    Color = " ",
+    Constant = " ",
+    Constructor = " ",
+    Enum = " ",
+    EnumMember = " ",
+    Event = " ",
+    Field = " ",
+    File = " ",
+    Folder = "󰉋 ",
+    Function = "󰡱",
+    Interface = " ",
+    Key = " ",
+    Keyword = " ",
+    Method = " ",
+    Module = " ",
+    Namespace = " ",
+    Null = "󰟢 ",
+    Number = " ",
+    Object = " ",
+    Operator = " ",
+    Package = " ",
+    Property = " ",
+    Reference = " ",
+    Snippet = " ",
+    String = " ",
+    Struct = " ",
+    Text = " ",
+    TypeParameter = " ",
+    Unit = " ",
+    Value = " ",
+    Variable = " ",
 }
 
-settings.diagnostic_signs = { Error = "", Warn = "", Hint = "", Info = "" }
+settings.diagnostic_signs = { Error = "", Warn = "", Hint = "", Info = "" }
 
 return settings

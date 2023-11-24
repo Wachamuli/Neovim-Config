@@ -15,10 +15,11 @@ cmp.setup({
   completion = {
     completeopt = "menu,menuone,noinsert",
     keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
-    keyword_length = 1
+    keyword_length = 1,
+    docs_initially_visible = false,
   },
   formatting = {
-    fields = { "abbr", "kind", "menu" },
+    fields = { "kind", "abbr" },
     expandable_indicator = false,
     format = function(_, vim_item)
       vim_item.menu = vim_item.kind
@@ -30,14 +31,25 @@ cmp.setup({
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
   },
+  view = {
+    docs = { auto_open = false }
+  },
   mapping = cmp.mapping.preset.insert({
     ["<A-j>"] = cmp.mapping.select_next_item(),
     ["<A-k>"] = cmp.mapping.select_prev_item(),
     ["<A-h>"] = cmp.mapping.scroll_docs(-4),
     ["<A-l>"] = cmp.mapping.scroll_docs(4),
-    ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.abort(),
     ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ["<C-Space>"] = cmp.mapping(function ()
+      if not cmp.visible() then
+        cmp.complete()
+      elseif cmp.visible_docs() then
+        cmp.close_docs()
+      elseif not cmp.visible_docs() then
+        cmp.open_docs()
+      end
+    end, { "i" }),
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
@@ -89,3 +101,4 @@ for name, _ in pairs(lspservers) do
     capabilities = capabilities
   })
 end
+
