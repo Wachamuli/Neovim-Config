@@ -1,6 +1,6 @@
 local settings = {}
 
-require("onedark").load() -- onedark, tokyonight
+require("onedark").load({ style = "dark" }) -- onedark, tokyonight
 
 -- use :MasonInstall <language_server> if server isn't available
 settings.lspservers = {
