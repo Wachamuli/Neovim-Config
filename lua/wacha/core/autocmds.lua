@@ -1,3 +1,4 @@
+-- Get rid of white spaces on save
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     pattern = {"*"},
     callback = function(ev)

@@ -28,8 +28,9 @@ cmp.setup({
     end
   },
   window = {
-    completion = cmp.config.window.bordered({ col_offset = 4 }),
-    documentation = cmp.config.window.bordered(),
+    --completion = cmp.config.window.bordered(),
+    --documentation = cmp.config.window.bordered(),
+      --border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│', },
   },
   view = {
     docs = { auto_open = false }
@@ -40,7 +41,7 @@ cmp.setup({
     ["<A-h>"] = cmp.mapping.scroll_docs(-4),
     ["<A-l>"] = cmp.mapping.scroll_docs(4),
     ["<C-e>"] = cmp.mapping.abort(),
-    ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ["<Tab>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     ["<C-Space>"] = cmp.mapping(function ()
       if not cmp.visible() then
         cmp.complete()

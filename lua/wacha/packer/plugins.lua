@@ -47,7 +47,14 @@ return {
       },
     }
   },
-  {
+  { -- GIT integration
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      local options = require("wacha.packer.configs.gitsigns")
+      require("gitsigns").setup(options)
+    end
+  },
+  { -- FZF
     "nvim-telescope/telescope.nvim",
     tag = "0.1.4",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -60,6 +67,10 @@ return {
     "navarasu/onedark.nvim",
     lazy = false,
     priority = 1000,
+  },
+  {
+    "olimorris/onedarkpro.nvim",
+    priority = 1000 -- Ensure it loads first
   },
   {
     "folke/tokyonight.nvim",

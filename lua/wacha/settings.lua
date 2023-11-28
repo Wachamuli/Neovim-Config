@@ -1,6 +1,7 @@
 local settings = {}
 
-require("onedark").load({ style = "dark" }) -- onedark, tokyonight
+--require("onedark").setup({ style = "darker" }) -- onedark, tokyonight
+require("onedark").load() -- onedark, tokyonight
 
 -- use :MasonInstall <language_server> if server isn't available
 settings.lspservers = {
@@ -13,7 +14,7 @@ settings.lspservers = {
 settings.treesitter = { "lua", "rust", "python", "typescript", }
 
 settings.completion_icons = {
-   Array = " ",
+    Array = " ",
     Boolean = " ",
     Class = " ",
     Color = " ",
@@ -24,7 +25,7 @@ settings.completion_icons = {
     Event = " ",
     Field = " ",
     File = " ",
-    Folder = "󰉋 ",
+    Folder = " ",
     Function = "󰡱",
     Interface = " ",
     Key = " ",
