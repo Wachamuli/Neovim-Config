@@ -1,4 +1,5 @@
 return {
+  { 'nvim-tree/nvim-web-devicons' },
   { -- LSP
     "neovim/nvim-lspconfig",
     lazy = false,
@@ -6,7 +7,7 @@ return {
       require("wacha.packer.configs.lsp")
     end,
     dependencies = {
-      {   -- Language server installer
+      { -- Language server installer
         "williamboman/mason.nvim",
         lazy = false,
         build = ":MasonUpdate",
@@ -45,6 +46,15 @@ return {
         build = "make install_jsregexp",
       },
     }
+  },
+  {
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.4",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      local config = require("wacha.packer.configs.telescope")
+      require("telescope").setup(config)
+    end,
   },
   { -- Theme
     "navarasu/onedark.nvim",

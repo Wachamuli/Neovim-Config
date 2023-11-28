@@ -49,6 +49,6 @@ settings.completion_icons = {
     Variable = " ",
 }
 
-settings.diagnostic_signs = { Error = "", Warn = "", Hint = "", Info = "" }
+settings.diagnostic_signs = { Error = "", Warn = "", Info = "",  Hint = "",  }
 
 return settings

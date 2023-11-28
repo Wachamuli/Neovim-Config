@@ -28,7 +28,7 @@ cmp.setup({
     end
   },
   window = {
-    completion = cmp.config.window.bordered(),
+    completion = cmp.config.window.bordered({ col_offset = 4 }),
     documentation = cmp.config.window.bordered(),
   },
   view = {
