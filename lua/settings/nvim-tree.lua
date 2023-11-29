@@ -12,7 +12,11 @@ keymap("n", "<Space>e", "<cmd>:NvimTreeToggle<CR>", opts)
 
 nvimtree.setup {
   renderer = {
+    indent_markers = {
+       enable = false,
+    },
     icons = {
+      webdev_colors = true,
       show = {
         git = 1,
         folders = 1,
@@ -108,22 +112,6 @@ nvimtree.setup {
     open_file = {
         quit_on_open = true,
     },
-  },
-  renderer = {
-    indent_markers = {
-       enable = false,
-    },
-    icons = {
-      webdev_colors = true,
-    },
---    indent_markers = {
-  --    enable = true,
-    --  icons = {
-      --    corner = "└ ",
-        --  edge = "│ ",
-         -- none = "  ",
-     -- },
-    --},
   },
 }
 

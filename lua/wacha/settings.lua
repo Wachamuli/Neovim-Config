@@ -1,8 +1,5 @@
 local settings = {}
 
-require("onedark").setup({ style = "darker" }) -- onedark, tokyonight
-require("onedark").load() -- onedark, tokyonight
-
 -- use :MasonInstall <language_server> if server isn't available
 settings.lspservers = {
   ["lua_ls"] = {}, -- server specific configuration goes here

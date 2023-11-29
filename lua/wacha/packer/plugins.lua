@@ -27,6 +27,7 @@ return {
   },
   { -- Completion
     "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
     config = function()
       require("wacha.packer.configs.cmp")
     end,
@@ -55,6 +56,10 @@ return {
   },
   { -- FZF
     "nvim-telescope/telescope.nvim",
+    cmd = "Telescope",
+    keys = {
+      {"<C-p>", "<cmd>Telescope find_files<CR>"}
+    },
     tag = "0.1.4",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
@@ -67,7 +72,12 @@ return {
     version = "*",
     lazy = false,
     dependencies = {
-      "nvim-tree/nvim-web-devicons",
+      {"nvim-tree/nvim-web-devicons",
+        config = function()
+          local options = { override = require("wacha.packer.configs.icons") }
+          require("nvim-web-devicons").setup(options)
+        end
+      },
     },
     config = function()
       require("wacha.packer.configs.tree")
@@ -77,5 +87,9 @@ return {
     "navarasu/onedark.nvim",
     lazy = false,
     priority = 1000,
+    config = function()
+      require("onedark").setup({ style = "darker" })
+      require("onedark").load()
+    end
   },
 }
