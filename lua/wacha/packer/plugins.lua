@@ -1,5 +1,4 @@
 return {
-  { 'nvim-tree/nvim-web-devicons' },
   { -- LSP
     "neovim/nvim-lspconfig",
     lazy = false,
@@ -63,18 +62,9 @@ return {
       require("telescope").setup(config)
     end,
   },
-  { -- Theme
+  { --THEME
     "navarasu/onedark.nvim",
     lazy = false,
     priority = 1000,
-  },
-  {
-    "olimorris/onedarkpro.nvim",
-    priority = 1000 -- Ensure it loads first
-  },
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 999,
   },
 }
