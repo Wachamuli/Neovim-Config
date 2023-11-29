@@ -62,6 +62,17 @@ return {
       require("telescope").setup(config)
     end,
   },
+  { -- File Explorer
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("wacha.packer.configs.tree")
+    end,
+  },
   { --THEME
     "navarasu/onedark.nvim",
     lazy = false,
