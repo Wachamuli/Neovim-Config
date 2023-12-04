@@ -112,8 +112,6 @@
       })
 
       -- Set up lspconfig.
-
-      -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
       local lspconfig = require('lspconfig')
       local lspservers = require("wacha.settings").lspservers
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
