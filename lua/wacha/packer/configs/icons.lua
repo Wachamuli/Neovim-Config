@@ -780,7 +780,7 @@ return {
         name = "Material",
     },
     ["md"] = {
-        icon = "",
+        icon = "",
         color = "#42a5f5",
         cterm_color = "75",
         name = "Md",
@@ -955,7 +955,7 @@ return {
     },
     ["py"] = {
         icon = "󰌠",
-        color = "#ffbc03",
+        color = "#FFD43B",
         cterm_color = "214",
         name = "Py",
     },
@@ -1639,7 +1639,7 @@ return {
         name = "CONTRIBUTING.md",
     },
     ["README.md"] = {
-        icon = "",
+        icon = "",
         color = "#42a5f5",
         cterm_color = "75",
         name = "README.md",

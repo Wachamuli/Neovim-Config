@@ -57,7 +57,7 @@ local system_open = { cmd = 'zathura' }
 
 local view = {
   cursorline = false,
-  signcolumn = 'no',
+  signcolumn = "yes",
   width = { max = 38, min = 38 },
   side = "right",
 }
@@ -94,17 +94,4 @@ require('nvim-tree').setup {
   diagnostics = { enable = true },
   on_attach = on_attach,
 }
-
-local api = require 'nvim-tree.api'
-local Event = api.events.Event
-api.events.subscribe(Event.TreeOpen, function(_)
-    vim.cmd [[setlocal statuscolumn=\ ]]
-    vim.cmd [[setlocal signcolumn=yes:1]]
-    vim.cmd [[setlocal cursorlineopt=number]]
-    vim.cmd [[setlocal fillchars+=vert:🮇]]
-    vim.cmd [[setlocal fillchars+=horizup:🮇]]
-    vim.cmd [[setlocal fillchars+=vertright:🮇]]
-    vim.cmd [[setlocal fillchars+=vertright:🮇]]
-    vim.cmd [[setlocal fillchars+=verthoriz:🮇]]
-end)
 

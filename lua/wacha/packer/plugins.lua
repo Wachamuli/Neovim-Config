@@ -58,7 +58,7 @@ return {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
     keys = {
-      {"<C-p>", "<cmd>Telescope find_files<CR>"}
+      { "<C-p>", "<cmd>Telescope find_files<CR>" }
     },
     tag = "0.1.4",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -71,17 +71,30 @@ return {
     "nvim-tree/nvim-tree.lua",
     version = "*",
     lazy = false,
+    config = function()
+      require("wacha.packer.configs.tree")
+    end,
     dependencies = {
-      {"nvim-tree/nvim-web-devicons",
+      {
+        "nvim-tree/nvim-web-devicons",
+        lazy = true,
         config = function()
           local options = { override = require("wacha.packer.configs.icons") }
           require("nvim-web-devicons").setup(options)
         end
       },
     },
+  },
+  { --UI
+    "lukas-reineke/indent-blankline.nvim",
+    event = "BufReadPost",
+    main = "ibl",
+    opts = {},
     config = function()
-      require("wacha.packer.configs.tree")
-    end,
+      require("ibl").setup({
+        indent = { char = "▏" }
+      })
+    end
   },
   { --THEME
     "navarasu/onedark.nvim",
@@ -91,5 +104,5 @@ return {
       require("onedark").setup({ style = "darker" })
       require("onedark").load()
     end
-  },
+  }
 }
