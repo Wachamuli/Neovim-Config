@@ -10,6 +10,17 @@ settings.lspservers = {
 
 settings.treesitter = { "lua", "rust", "python", "typescript", }
 
+settings.formatters = {
+  python = { "isort", "black" },
+  css = { "prettier" },
+  html = { "prettier" },
+  json = {"prettier"},
+  typescript = {"prettier"},
+  typescriptreact = {"prettier"},
+  javascriptreact = {"prettier"},
+  markdown = {"prettier"},
+}
+
 settings.completion_icons = {
     Array = " ",
     Boolean = " ",
