@@ -7,7 +7,7 @@ return {
       "nvim-tree/nvim-web-devicons",
       lazy = true,
       config = function()
-        local options = { override = require("wacha.core.icons") }
+        local options = { override = require("wacha.settings").icons }
         require("nvim-web-devicons").setup(options)
       end
     },

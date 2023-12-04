@@ -1,4 +1,4 @@
-return { --THEME
+ return { --THEME
   "navarasu/onedark.nvim",
   lazy = false,
   priority = 1000,
