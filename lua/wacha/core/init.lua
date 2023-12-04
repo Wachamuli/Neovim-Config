@@ -1,3 +1,3 @@
-require("wacha.core.options")
-require("wacha.core.keymaps")
-require("wacha.core.autocmds")
+require("options")
+require("keymaps")
+require("autocmds")

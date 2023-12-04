@@ -1,4 +1,4 @@
 require("wacha.core")
-require("wacha.packer")
-require("wacha.settings")
+require("wacha.lazy")
+
 

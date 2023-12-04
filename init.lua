@@ -1,4 +1,4 @@
-require('wacha')
+require("wacha")
 --require("settings.plugins")
 
 --require("settings.lsp")
