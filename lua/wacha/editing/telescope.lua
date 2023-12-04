@@ -1,5 +1,6 @@
 return { -- FZF
   "nvim-telescope/telescope.nvim",
+  lazy = true,
   cmd = "Telescope",
   keys = {
     { "<C-p>", "<cmd>Telescope find_files<CR>" }

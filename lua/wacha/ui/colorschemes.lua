@@ -1,9 +1,13 @@
- return { --THEME
+local theme = require("wacha.settings").theme
+
+return {
   "navarasu/onedark.nvim",
   lazy = false,
   priority = 1000,
   config = function()
-    require("onedark").setup({ style = "darker" })
-    require("onedark").load()
+    if theme == "onedark" then
+      require("onedark").setup({ style = "darker" })
+      require("onedark").load()
+    end
   end
 }

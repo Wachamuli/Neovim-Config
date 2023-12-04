@@ -1,10 +1,12 @@
 return {
   "neovim/nvim-lspconfig",
-  lazy = false,
+  lazy = true,
   dependencies = {
     { -- Language server installer
       "williamboman/mason.nvim",
-      lazy = false,
+      event = "User FileOpened",
+      lazy = true,
+      cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
       build = ":MasonUpdate",
       config = function()
         require("mason").setup()
