@@ -1,6 +1,7 @@
 return {
   "neovim/nvim-lspconfig",
   lazy = true,
+  event = "BufRead",
   dependencies = {
     { -- Language server installer
       "williamboman/mason.nvim",

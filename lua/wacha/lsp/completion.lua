@@ -20,19 +20,14 @@ return {
     },
   },
   config = function()
-    -- Set up nvim-cmp.
     ---@diagnostic disable-next-line: different-requires
     local cmp = require("cmp")
     local completion_icons = require("wacha.settings").completion_icons
 
     cmp.setup({
       snippet = {
-        -- REQUIRED - you must specify a snippet engine
         expand = function(args)
-          -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
           require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-          -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-          -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
         end,
       },
       completion = {
@@ -50,18 +45,20 @@ return {
           return vim_item
         end
       },
+
       window = {
-        --completion = cmp.config.window.bordered(),
-        documentation = {
-          border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│', },
-        }
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered()
+        --{
+            --border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│', },
+        --}
       },
       view = {
         docs = { auto_open = false }
       },
       mapping = cmp.mapping.preset.insert({
-        ["<A-j>"] = cmp.mapping.select_next_item(),
-        ["<A-k>"] = cmp.mapping.select_prev_item(),
+        ["<A-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select, count = 1 }),
+        ["<A-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select, count = 1 }),
         ["<A-h>"] = cmp.mapping.scroll_docs(-4),
         ["<A-l>"] = cmp.mapping.scroll_docs(4),
         ["<C-e>"] = cmp.mapping.abort(),

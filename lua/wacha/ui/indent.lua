@@ -1,10 +1,13 @@
 return {
-    "lukas-reineke/indent-blankline.nvim",
-    event = "BufReadPost",
-    main = "ibl",
-    config = function()
-      require("ibl").setup({
-        indent = { char = "▏" }
-      })
-    end
+  "lukas-reineke/indent-blankline.nvim",
+  event = "BufReadPost",
+  main = "ibl",
+  config = function()
+    require("ibl").setup({
+      indent = { char = "▏" },
+      scope = {
+        highlight = "Normal"
+      }
+    })
+  end
 }

@@ -3,7 +3,6 @@ return {
   version = "*",
   lazy = false,
   cmd = { "NvimTreeToggle", "NvimTreeOpen", "NvimTreeFocus", "NvimTreeFindFileToggle" },
-  event = "User DirOpened",
   dependencies = {
     {
       "nvim-tree/nvim-web-devicons",
@@ -24,7 +23,6 @@ return {
     keymap("n", "<C-b>", "<cmd>:NvimTreeToggle<CR>", opts)
     --keymap("n", "<C-r>r", "<cmd>:NvimTreeRefresh<CR>", opts)
     --keymap("n", "<leader>n", "<cmd>:NvimTreeFindFile<CR>", opts)
-
 
     local icons = {
       git_placement = 'after',
@@ -70,8 +68,6 @@ return {
       icons = icons,
     }
 
-    local system_open = { cmd = 'zathura' }
-
     local view = {
       cursorline = false,
       signcolumn = "yes",
@@ -105,7 +101,6 @@ return {
       hijack_cursor = true,
       sync_root_with_cwd = true,
       view = view,
-      system_open = system_open,
       renderer = renderer,
       git = { ignore = false },
       diagnostics = { enable = true },
@@ -113,13 +108,3 @@ return {
     }
   end,
 }
-
-
-
-
-
-
-
-
-
-

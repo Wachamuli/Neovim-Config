@@ -19,6 +19,20 @@ return { -- FZF
     vim.keymap.set("n", "<leader>fh", builtin.help_tags, opts)
 
     require("telescope").setup({
+      pickers = {
+        find_files = {
+          prompt_title = false,
+          theme = "dropdown",
+          layout_config = {
+            width = 0.46,
+            height = 0.30,
+          },
+          borderchars = {
+             prompt = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+             results = { "─", "│", "─", "│", "├", "┤", "╯", "╰" },
+          },
+        }
+      },
       defaults = {
         preview = false,
         results_title = false,
@@ -29,17 +43,12 @@ return { -- FZF
         selection_strategy = "reset",
         sorting_strategy = "ascending",
         layout_strategy = "vertical",
-        --borderchars = {
-        -- prompt = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-        --results = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-        --},
         set_env = { ["COLORTERM"] = "truecolor" },
         file_sorter = require("telescope.sorters").get_fuzzy_file,
         generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-        --file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-        --grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-        --qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-        --requireselection_caret = "  ",
+        file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+        grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+        qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
         path_display = function(_, path)
           local bufferNameTail = tl_utils.path_tail(path)
           local remaining_path = require('plenary.strings').truncate(path, #path - #bufferNameTail, '')
@@ -58,16 +67,6 @@ return { -- FZF
           })
         end,
       },
-      pickers = {
-        find_files = {
-          prompt_title = false,
-          theme = "dropdown",
-          layout_config = {
-            width = 0.46,
-            height = 0.30,
-          },
-        }
-      }
     })
   end,
 }

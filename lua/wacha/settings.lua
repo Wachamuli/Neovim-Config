@@ -1,6 +1,6 @@
 local settings = {}
 
-settings.theme = "onedark"
+settings.theme = "nordic" --onedark, nordic
 -- use :MasonInstall <language_server> if server isn't available
 settings.lspservers = {
   ["lua_ls"] = {}, -- server specific configuration goes here
@@ -13,12 +13,13 @@ settings.treesitter = { "lua", "rust", "python", "typescript", }
 
 settings.formatters = {
   python = { "isort", "black" },
+  typescript = { "prettier" },
+
   css = { "prettier" },
   html = { "prettier" },
   json = { "prettier" },
-  typescript = { "prettier" },
+
   typescriptreact = { "prettier" },
-  javascriptreact = { "prettier" },
   markdown = { "prettier" },
 }
 
@@ -940,7 +941,7 @@ settings.icons = {
   },
   ['package-lock.json'] = {
     icon = "",
-    color = "#7a0d21",
+    color = "#ffd54f",
     cterm_color = "1",
     name = "PackageLockJson"
   },

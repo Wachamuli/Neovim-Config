@@ -7,9 +7,9 @@ return {
     conform.setup({
       formatters_by_ft = formatters
     })
-    vim.keymap.set({ "n", "v" }, "<leader>f", function()
+    vim.keymap.set({ "n", "v" }, "<leader>a", function()
       conform.format({
-        async = false,
+        async = true,
         timeout_ms = 500,
         lsp_fallback = true
       })

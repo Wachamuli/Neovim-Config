@@ -18,7 +18,7 @@ local conditions = {
 local function capitalize(filetype)
   local upperCharacter = string.upper(string.sub(filetype, 1, 1))
   local rest = string.sub(filetype, 2, string.len(filetype))
-  local formatted = string.format("%s%s", upperCharacter, rest) 
+  local formatted = string.format("%s%s", upperCharacter, rest)
   return formatted
 end
 
@@ -93,7 +93,6 @@ ins_left {
       return msg
   end,
   icon = " ",
-  cond = conditions.buffer_not_empty,
 }
 
 ins_left {
@@ -111,7 +110,7 @@ ins_left {
 -- Add components to right sections
 ins_right {
   function()
-    return "" 
+    return ""
   end,
   cond = conditions.check_git_workspace,
   padding = 0,
