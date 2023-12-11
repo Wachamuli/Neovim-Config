@@ -1,18 +1,23 @@
 local settings = {}
 
-settings.theme = "nordic" --onedark, nordic
+settings.theme = "onedark" --onedark, nordic
 -- use :MasonInstall <language_server> if server isn't available
 settings.lspservers = {
   ["lua_ls"] = {}, -- server specific configuration goes here
   ["rust_analyzer"] = {},
-  ["pyright"] = {},
   ["tsserver"] = {},
+
+  ["pyright"] = {},
+  ["ruff_lsp"] = {
+    on_attach = function(client, _)
+      client.server_capabilities.hoverProvider = false
+    end
+  },
 }
 
 settings.treesitter = { "lua", "rust", "python", "typescript", }
 
 settings.formatters = {
-  python = { "isort", "black" },
   typescript = { "prettier" },
 
   css = { "prettier" },

@@ -6,7 +6,8 @@ return {
     require("ibl").setup({
       indent = { char = "▏" },
       scope = {
-        highlight = "Normal"
+        highlight = "Normal",
+        show_end = false,
       }
     })
   end

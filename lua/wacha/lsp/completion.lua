@@ -47,11 +47,13 @@ return {
       },
 
       window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered()
-        --{
-            --border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│', },
-        --}
+        -- cmp.config.window.bordered(),
+        completion = {
+          border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│', },
+        },
+        documentation = {
+          border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│', },
+        }
       },
       view = {
         docs = { auto_open = false }
@@ -74,14 +76,14 @@ return {
         end, { "i" }),
       }),
       sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
+        { name = 'nvim_lsp', priority = 1000 },
         { name = "nvim_lsp_signature_help" },
         -- { name = 'vsnip' }, -- For vsnip users.
-        { name = 'luasnip' }, -- For luasnip users.
+        { name = 'luasnip', priority = 500 }, -- For luasnip users.
         -- { name = 'ultisnips' }, -- For ultisnips users.
         -- { name = 'snippy' }, -- For snippy users.
       }, {
-        { name = 'buffer' },
+        { name = 'buffer', priority = 250 },
       })
     })
 

@@ -29,7 +29,7 @@ return {
             separator = ' ',
             padding = 1,
             symbols = {
-              modified = '', -- Text to show when the file is modified.
+              modified = '', -- Text to show when the file is modified.
             },
           },
           {

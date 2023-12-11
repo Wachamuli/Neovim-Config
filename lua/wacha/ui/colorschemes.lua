@@ -18,6 +18,15 @@ return {
     priority = 1000,
     config = function()
       if theme == "nordic" then
+        require("nordic").setup({
+          override = {
+            TelescopePromptBorder = { bg = "#242933", fg = "#FFFFFF" },
+            TelescopeResultsBorder = { bg = "#242933", fg = "#FFFFFF" },
+            TelescopeResultsNormal = { bg = "#242933" },
+            TelescopePromptNormal = { bg = "#242933" },
+          }
+        })
+
         require("nordic").load()
       end
     end

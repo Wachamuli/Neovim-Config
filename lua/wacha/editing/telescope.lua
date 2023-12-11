@@ -3,20 +3,14 @@ return { -- FZF
   lazy = true,
   cmd = "Telescope",
   keys = {
-    { "<C-p>", "<cmd>Telescope find_files<CR>" }
+    { "<C-p>", "<cmd>Telescope find_files<CR>" },
+    { "<Space>1", "<cmd>Telescope buffers<CR>" }
   },
   tag = "0.1.4",
   dependencies = { "nvim-lua/plenary.nvim" },
   config = function()
-    local builtin = require("telescope.builtin")
     local tl_utils = require("telescope.utils")
     local tl_entry_display = require("telescope.pickers.entry_display")
-
-    local opts = { noremap = true, silent = true }
-    vim.keymap.set("n", "<C-p>", builtin.find_files, opts)
-    vim.keymap.set("n", "<leader>fg", builtin.live_grep, opts)
-    vim.keymap.set("n", "<leader>fb", builtin.buffers, opts)
-    vim.keymap.set("n", "<leader>fh", builtin.help_tags, opts)
 
     require("telescope").setup({
       pickers = {
@@ -37,12 +31,11 @@ return { -- FZF
         preview = false,
         results_title = false,
         prompt_prefix = "   ", -- " "
-        selection_caret = "󱞩 ",
+        selection_caret = "󱞩 ",--  󱞩
         entry_prefix = "  ",
         initial_mode = "insert",
         selection_strategy = "reset",
         sorting_strategy = "ascending",
-        layout_strategy = "vertical",
         set_env = { ["COLORTERM"] = "truecolor" },
         file_sorter = require("telescope.sorters").get_fuzzy_file,
         generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
