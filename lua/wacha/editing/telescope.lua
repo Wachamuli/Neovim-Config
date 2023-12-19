@@ -1,7 +1,6 @@
 return { -- FZF
   "nvim-telescope/telescope.nvim",
   lazy = true,
-  event = "BufEnter",
   cmd = "Telescope",
   tag = "0.1.4",
   keys = {
