@@ -26,10 +26,10 @@ return {
 
     -- Global mappings.
     -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-    vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
-    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-    vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-    vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+    --vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, { desc = "Open d"})
+    vim.keymap.set('n', 'g[', vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
+    vim.keymap.set('n', 'g]', vim.diagnostic.goto_next, { desc = "Next diagnostic" })
+    vim.keymap.set('n', 'gq', vim.diagnostic.setloclist, { desc = "Show diagnostics" })
 
     -- Use LspAttach autocommand to only map the following keys
     -- after the language server attaches to the current buffer
@@ -40,22 +40,23 @@ return {
         vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
         local opts = { buffer = ev.buf }
-        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-        vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = "Go to declaration", buffer = ev.buf })
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "Go to definition", buffer = ev.buf })
+        vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = "Show references" })
+        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { desc = "Go to implementation", buffer = ev.buf })
+        vim.keymap.set('n', 'gn', vim.lsp.buf.rename, { desc = "Rename symbol", buffer = ev.buf })
+        vim.keymap.set('n', 'gk', vim.lsp.buf.hover, { desc = "Hover symbol", buffer = ev.buf })
+        vim.keymap.set({ 'n', 'v' }, 'ga', vim.lsp.buf.code_action, { desc = "Code action", buffer = ev.buf })
+
+        vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, { desc = "Signature help", buffer = ev.buf })
         vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
         vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
         vim.keymap.set('n', '<leader>wl', function()
           print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
         end, opts)
         vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
-        vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-        vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
-        vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
         --vim.keymap.set('n', '<leader>f', function()
-          --vim.lsp.buf.format { async = true }
+        --vim.lsp.buf.format { async = true }
         --end, opts)
       end,
     })
@@ -66,5 +67,33 @@ return {
       local hl = "DiagnosticSign" .. type
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
     end
+
+    -- vim.diagnostic.config({
+    --   virtual_text = false, -- Turn off inline diagnostics
+    -- })
+    vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
+    vim.api.nvim_create_autocmd({ "CursorHold" }, {
+      pattern = "*",
+      group = "lsp_diagnostics_hold",
+      callback = function()
+        for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
+          if vim.api.nvim_win_get_config(winid).zindex then
+            return
+          end
+        end
+
+        vim.diagnostic.open_float(0, {
+          scope = "cursor",
+          focusable = false,
+          close_events = {
+            "CursorMoved",
+            "CursorMovedI",
+            "BufHidden",
+            "InsertCharPre",
+            "WinLeave",
+          },
+        })
+      end,
+    })
   end
 }

@@ -41,15 +41,17 @@ return {
           symlink_open = '󰉒 ',
         },
         git = {
-          deleted = '',
-          unstaged = '',
-          untracked = '',
-          staged = '',
-          unmerged = '',
+          unstaged = "✚",
+          staged = "●",
+          unmerged = "",
+          renamed = "»",
+          untracked = "…",
+          deleted = "✖",
+          ignored = "◌",
         },
+
       },
     }
-
     local renderer = {
       root_folder_label = function(path)
         local segments = {}

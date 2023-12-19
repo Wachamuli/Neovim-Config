@@ -1,6 +1,6 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  event = "BufReadPost",
+  event = { "BufReadPost", "VeryLazy" },
   build = ":TSUpdate",
   cmd = {
     "TSInstall",

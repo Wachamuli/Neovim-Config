@@ -1,37 +1,59 @@
 return { -- FZF
   "nvim-telescope/telescope.nvim",
   lazy = true,
+  event = "BufEnter",
   cmd = "Telescope",
-  keys = {
-    { "<C-p>", "<cmd>Telescope find_files<CR>" },
-    { "<Space>1", "<cmd>Telescope buffers<CR>" }
-  },
   tag = "0.1.4",
+  keys = {
+    { "<leader>ff", "<cmd>Telescope find_files<CR>" },
+    { "<leader>fb", "<cmd>Telescope buffers<CR>" },
+    { "<leader>fc", "<cmd>Telescope colorscheme<CR>" },
+    { "<leader>fg", "<cmd>Telescope git_commits<CR>" },
+  },
   dependencies = { "nvim-lua/plenary.nvim" },
   config = function()
-    local tl_utils = require("telescope.utils")
-    local tl_entry_display = require("telescope.pickers.entry_display")
+    local telescope = require("telescope.builtin")
+    vim.keymap.set("n", "<leader>ff", telescope.find_files, { desc = "Find files" })
+    vim.keymap.set("n", "<leader>fb", telescope.buffers, { desc = "Buffer list" })
+    vim.keymap.set("n", "<leader>fg", telescope.git_commits, { desc = "Git commits" })
+    vim.keymap.set("n", "<leader>fc", telescope.colorscheme, { desc = "Colorschemes" })
 
     require("telescope").setup({
       pickers = {
         find_files = {
-          prompt_title = false,
+          prompt_title = "Files",
+          theme = "dropdown",
+          preview = false,
+          layout_config = {
+            width = 0.46,
+            height = 0.30,
+          },
+          borderchars = {
+            prompt = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+            results = { "─", "│", "─", "│", "├", "┤", "╯", "╰" },
+          },
+        },
+        buffers = {
+          --prompt_title = false,
           theme = "dropdown",
           layout_config = {
             width = 0.46,
             height = 0.30,
           },
           borderchars = {
-             prompt = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-             results = { "─", "│", "─", "│", "├", "┤", "╯", "╰" },
+            prompt = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+            results = { "─", "│", "─", "│", "├", "┤", "╯", "╰" },
           },
-        }
+        },
+        git_commits = {
+          preview = true,
+        },
       },
       defaults = {
         preview = false,
         results_title = false,
         prompt_prefix = "   ", -- " "
-        selection_caret = "󱞩 ",--  󱞩
+        selection_caret = "󱞩 ", --  󱞩
         entry_prefix = "  ",
         initial_mode = "insert",
         selection_strategy = "reset",
@@ -43,6 +65,9 @@ return { -- FZF
         grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
         qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
         path_display = function(_, path)
+          local tl_utils = require("telescope.utils")
+          local tl_entry_display = require("telescope.pickers.entry_display")
+
           local bufferNameTail = tl_utils.path_tail(path)
           local remaining_path = require('plenary.strings').truncate(path, #path - #bufferNameTail, '')
           local tail = bufferNameTail .. " "

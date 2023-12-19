@@ -1,6 +1,6 @@
 local settings = {}
 
-settings.theme = "onedark" --onedark, nordic
+settings.theme = "catppuccin" --onedark, nordic
 -- use :MasonInstall <language_server> if server isn't available
 settings.lspservers = {
   ["lua_ls"] = {}, -- server specific configuration goes here

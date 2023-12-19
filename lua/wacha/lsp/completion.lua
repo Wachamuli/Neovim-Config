@@ -47,13 +47,14 @@ return {
       },
 
       window = {
-        -- cmp.config.window.bordered(),
-        completion = {
-          border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│', },
-        },
-        documentation = {
-          border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│', },
-        }
+        completion = cmp.config.window.bordered({
+            winhighlight = 'FloatBorder:Normal,Normal:CmpPmenu,CursorLine:PmenuSel,Search:None'
+        }),
+        documentation = cmp.config.window.bordered({
+            winhighlight = 'FloatBorder:Normal,Normal:CmpPmenu,CursorLine:PmenuSel,Search:None'
+        }),
+        --border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│', },
+        --cmp.config.window.bordered()
       },
       view = {
         docs = { auto_open = false }

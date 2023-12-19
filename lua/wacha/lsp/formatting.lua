@@ -7,12 +7,12 @@ return {
     conform.setup({
       formatters_by_ft = formatters
     })
-    vim.keymap.set({ "n", "v" }, "<Space>a", function()
+    vim.keymap.set({ "n", "v" }, "gf", function()
       conform.format({
         async = true,
         timeout_ms = 500,
         lsp_fallback = true
       })
-    end)
+    end, { desc = "Format code" })
   end
 }

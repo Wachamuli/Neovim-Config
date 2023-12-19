@@ -1,5 +1,6 @@
 return {
   "echasnovski/mini.comment",
+  lazy = true,
   event = "VeryLazy",
   config = function()
     require("mini.comment").setup({

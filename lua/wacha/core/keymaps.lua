@@ -6,10 +6,11 @@
 --   term_mode = "t",
 --   command_mode = "c",
 
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 --Remap space as leader key
+keymap("n", "q", "<Nop>", opts)
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "

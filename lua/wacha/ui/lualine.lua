@@ -10,48 +10,50 @@ return {
       options = {
         disabled_filetypes = { 'dashboard' },
         globalstatus = true,
+        section_separators = '',
+        component_separators = ''
       },
       sections = {
         lualine_a = {
-          {
-            'branch',
-            fmt = capitalize,
-            icon = { '' }, -- 󰊢
-            separator = { right = '', left = '' },
-            padding = 0,
-          },
+          "mode",
         },
         lualine_b = {},
         lualine_c = {
           {
+            "branch",
+            fmt = capitalize,
+            icon = { '' }, -- 󰊢
+            padding = 1,
+          },
+          {
+            "diff",
+            symbols = { added = ' ', modified = '󱎘 ', removed = ' ' },
+            always_visible = true,
+          },
+          {
             "filename",
             icon = "",
-            separator = ' ',
-            padding = 1,
+            padding = 0,
             symbols = {
-              modified = '', -- Text to show when the file is modified.
+              modified = '●', -- Text to show when the file is modified.
             },
           },
           {
             "diagnostics",
             sources = { 'nvim_diagnostic' },
-            symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ', other = ' 󰠠 ' },
-            always_visible = true,
-            colored = false,
+            symbols = { error = '  ', warn = ' ', info = ' ', hint = ' ', other = ' 󰠠 ' },
+            always_visible = false,
             padding = 1,
-            separator = ' ',
           },
         },
         lualine_x = {
           {
-
             "filetype",
             fmt = capitalize,
-            separator = { left = '' },
           },
           {
             function()
-              local msg = "No LSP"
+              local msg = "!LSP"
               local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
               local clients = vim.lsp.get_active_clients()
 
@@ -71,7 +73,6 @@ return {
             end,
             icon = " ",
             padding = 0,
-            separator = ' ',
             fmt = capitalize
           },
           {
@@ -83,13 +84,11 @@ return {
               end
               return format
             end,
-            separator = " ",
             fmt = capitalize
 
           },
           {
             'location',
-            separator = { right = '' },
             icon = ""
           },
         },
