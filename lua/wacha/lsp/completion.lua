@@ -48,10 +48,10 @@ return {
 
       window = {
         completion = cmp.config.window.bordered({
-            winhighlight = 'FloatBorder:Normal,Normal:CmpPmenu,CursorLine:PmenuSel,Search:None'
+          winhighlight = 'FloatBorder:Normal,Normal:CmpPmenu,CursorLine:PmenuSel,Search:None'
         }),
         documentation = cmp.config.window.bordered({
-            winhighlight = 'FloatBorder:Normal,Normal:CmpPmenu,CursorLine:PmenuSel,Search:None'
+          winhighlight = 'FloatBorder:Normal,Normal:CmpPmenu,CursorLine:PmenuSel,Search:None'
         }),
         --border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│', },
         --cmp.config.window.bordered()
@@ -77,10 +77,10 @@ return {
         end, { "i" }),
       }),
       sources = cmp.config.sources({
-        { name = 'nvim_lsp', priority = 1000 },
+        { name = 'nvim_lsp',               priority = 1000 },
         { name = "nvim_lsp_signature_help" },
         -- { name = 'vsnip' }, -- For vsnip users.
-        { name = 'luasnip', priority = 500 }, -- For luasnip users.
+        { name = 'luasnip',                priority = 500 }, -- For luasnip users.
         -- { name = 'ultisnips' }, -- For ultisnips users.
         -- { name = 'snippy' }, -- For snippy users.
       }, {

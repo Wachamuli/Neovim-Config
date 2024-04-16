@@ -17,8 +17,20 @@ return {
     name = "catppuccin",
     priority = 1000,
     config = function()
+      local catppuccin = require("catppuccin")
       if theme == "catppuccin" then
-        require("catppuccin").load()
+        catppuccin.setup({
+          -- flavour = "frappe", -- latte, frappe, macchiato, mocha
+          custom_highlights = function(colors)
+            return {
+              MiniClueDescSingle = { bg = colors.base },
+              MiniClueDescGroup = { bg = colors.base },
+              MiniClueNextKey = { bg = colors.base }
+            }
+          end
+        })
+
+        catppuccin.load()
       end
     end
   },
@@ -27,8 +39,9 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
+      local nordic = require("nordic")
       if theme == "nordic" then
-        require("nordic").setup({
+        nordic.setup({
           override = {
             TelescopePromptBorder = { bg = "#242933", fg = "#FFFFFF" },
             TelescopeResultsBorder = { bg = "#242933", fg = "#FFFFFF" },
@@ -43,7 +56,7 @@ return {
           }
         })
 
-        require("nordic").load()
+        nordic.load()
       end
     end
   }

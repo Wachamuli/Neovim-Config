@@ -8,8 +8,7 @@ return {
     bufferline.setup({
       highlights = {
         offset_separator = {
-          fg = '#1E222A',
-          bg = '#242933',
+          bg = 'none',
         },
       },
       options = {
@@ -27,7 +26,7 @@ return {
         offsets = {
           {
             filetype = "NvimTree",
-            text = "File Explorer",
+            -- text = "File Explorer",
             text_align = "center",
             highlight = "NvimTreeNormal",
             separator = true,

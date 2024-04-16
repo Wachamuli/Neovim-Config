@@ -33,7 +33,9 @@ return { -- FZF
           },
         },
         buffers = {
-          --prompt_title = false,
+          opts = {
+            sort_mru = true
+          },
           theme = "dropdown",
           layout_config = {
             width = 0.46,

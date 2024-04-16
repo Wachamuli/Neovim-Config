@@ -1,6 +1,6 @@
 local settings = {}
 
-settings.theme = "catppuccin" --onedark, nordic
+settings.theme = "catppuccin" --onedark, nordic, catppuccin
 -- use :MasonInstall <language_server> if server isn't available
 settings.lspservers = {
   ["lua_ls"] = {}, -- server specific configuration goes here
@@ -15,7 +15,7 @@ settings.lspservers = {
   },
 }
 
-settings.treesitter = { "lua", "rust", "python", "typescript", }
+settings.treesitter = { "lua", "rust", "python", "typescript", "tsx" }
 
 settings.formatters = {
   typescript = { "prettier" },

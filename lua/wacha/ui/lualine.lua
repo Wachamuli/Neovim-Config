@@ -7,33 +7,39 @@ return {
   event = "VeryLazy",
   config = function()
     require('lualine').setup {
+      --  
       options = {
         disabled_filetypes = { 'dashboard' },
         globalstatus = true,
         section_separators = '',
-        component_separators = ''
+        component_separators = '',
+        separator = { left = '', right = ''}
       },
       sections = {
         lualine_a = {
           "mode",
         },
-        lualine_b = {},
-        lualine_c = {
+        lualine_b = {
           {
             "branch",
             fmt = capitalize,
             icon = { '' }, -- 󰊢
             padding = 1,
           },
+        },
+        lualine_c = {
           {
             "diff",
             symbols = { added = ' ', modified = '󱎘 ', removed = ' ' },
             always_visible = true,
+            colored = false,
+            separator = { left = '' }
           },
           {
             "filename",
             icon = "",
             padding = 0,
+            separator = { left = '' },
             symbols = {
               modified = '●', -- Text to show when the file is modified.
             },
@@ -42,14 +48,18 @@ return {
             "diagnostics",
             sources = { 'nvim_diagnostic' },
             symbols = { error = '  ', warn = ' ', info = ' ', hint = ' ', other = ' 󰠠 ' },
-            always_visible = false,
+            always_visible = true,
+            colored = false,
             padding = 1,
           },
         },
         lualine_x = {
+        },
+        lualine_y = {
           {
             "filetype",
             fmt = capitalize,
+            separator = { left = '' }
           },
           {
             function()
@@ -72,8 +82,8 @@ return {
               return msg
             end,
             icon = " ",
-            padding = 0,
-            fmt = capitalize
+            fmt = capitalize,
+            separator = { right = '' }
           },
           {
             function()
@@ -84,17 +94,17 @@ return {
               end
               return format
             end,
-            fmt = capitalize
-
+            fmt = capitalize,
+            separator = { right = '' }
           },
+        },
+        lualine_z = {
           {
             'location',
-            icon = ""
+            -- icon = ""
+            -- separator = { left = '', right = '' }
           },
         },
-        lualine_y = {
-        },
-        lualine_z = {},
       },
     }
 
