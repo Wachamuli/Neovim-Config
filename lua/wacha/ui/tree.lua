@@ -73,7 +73,7 @@ return {
     local view = {
       cursorline = false,
       signcolumn = "yes",
-      width = { max = 38, min = 38 },
+      width = { min = 25 },
       side = "right",
     }
 

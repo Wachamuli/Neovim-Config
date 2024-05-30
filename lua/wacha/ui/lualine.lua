@@ -7,60 +7,59 @@ return {
   event = "VeryLazy",
   config = function()
     require('lualine').setup {
-      --  
       options = {
         disabled_filetypes = { 'dashboard' },
         globalstatus = true,
         section_separators = '',
         component_separators = '',
-        separator = { left = '', right = ''}
+        --separator = { left = '', right = '' }
       },
       sections = {
         lualine_a = {
-          "mode",
         },
         lualine_b = {
-          {
-            "branch",
-            fmt = capitalize,
-            icon = { '' }, -- 󰊢
-            padding = 1,
-          },
         },
         lualine_c = {
           {
-            "diff",
-            symbols = { added = ' ', modified = '󱎘 ', removed = ' ' },
-            always_visible = true,
-            colored = false,
-            separator = { left = '' }
+            'mode',
+            fmt = function(str) return str:sub(1,1) end,
           },
           {
-            "filename",
-            icon = "",
-            padding = 0,
-            separator = { left = '' },
-            symbols = {
-              modified = '●', -- Text to show when the file is modified.
-            },
+            "branch",
+            --fmt = capitalize,
+            icon = { '' }, -- '󰊢 '
+            padding = 1,
           },
+          --{
+          --  "filename",
+          --  icon = "",
+          --  padding = 0,
+          --  separator = { left = '' },
+          --  symbols = {
+          --    modified = '●', -- Text to show when the file is modified.
+          --  },
+          --},
           {
             "diagnostics",
             sources = { 'nvim_diagnostic' },
             symbols = { error = '  ', warn = ' ', info = ' ', hint = ' ', other = ' 󰠠 ' },
-            always_visible = true,
-            colored = false,
+            always_visible = false,
+            colored = true,
             padding = 1,
           },
         },
         lualine_x = {
-        },
-        lualine_y = {
           {
-            "filetype",
-            fmt = capitalize,
-            separator = { left = '' }
+            "diff",
+            symbols = { added = ' ', modified = '󱎘 ', removed = ' ' },
+            always_visible = false,
+            colored = false,
+            separator = { left = '' }
           },
+        --{
+        --    "filetype",
+        --    fmt = capitalize,
+        --},
           {
             function()
               local msg = "!LSP"
@@ -82,7 +81,7 @@ return {
               return msg
             end,
             icon = " ",
-            fmt = capitalize,
+            --fmt = capitalize,
             separator = { right = '' }
           },
           {
@@ -94,16 +93,18 @@ return {
               end
               return format
             end,
-            fmt = capitalize,
+            --fmt = capitalize,
             separator = { right = '' }
           },
-        },
-        lualine_z = {
           {
             'location',
             -- icon = ""
             -- separator = { left = '', right = '' }
           },
+        },
+        lualine_y = {
+        },
+        lualine_z = {
         },
       },
     }
