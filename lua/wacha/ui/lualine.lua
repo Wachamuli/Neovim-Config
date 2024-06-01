@@ -16,19 +16,20 @@ return {
       },
       sections = {
         lualine_a = {
+          {
+            'mode',
+            fmt = function(str) return str:sub(1, 1) end,
+            --separator = { left = '', right = '' }
+          },
         },
         lualine_b = {
         },
         lualine_c = {
           {
-            'mode',
-            fmt = function(str) return str:sub(1,1) end,
-          },
-          {
             "branch",
             --fmt = capitalize,
             icon = { '' }, -- '󰊢 '
-            padding = 1,
+            padding = 2,
           },
           --{
           --  "filename",
@@ -42,24 +43,24 @@ return {
           {
             "diagnostics",
             sources = { 'nvim_diagnostic' },
-            symbols = { error = '  ', warn = ' ', info = ' ', hint = ' ', other = ' 󰠠 ' },
+            symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ', other = ' 󰠠 ' },
             always_visible = false,
             colored = true,
             padding = 1,
           },
         },
         lualine_x = {
+          --{
+          --  "diff",
+          --  symbols = { added = ' ', modified = '󱎘 ', removed = ' ' },
+          --  always_visible = false,
+          --  colored = false,
+          -- separator = { left = '' }
+          --},
           {
-            "diff",
-            symbols = { added = ' ', modified = '󱎘 ', removed = ' ' },
-            always_visible = false,
-            colored = false,
-            separator = { left = '' }
+            "filetype",
+            fmt = capitalize,
           },
-        --{
-        --    "filetype",
-        --    fmt = capitalize,
-        --},
           {
             function()
               local msg = "!LSP"
@@ -74,13 +75,13 @@ return {
                 local filetypes = client.config.filetypes
 
                 if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-                  return client.name
+                  return '[' .. client.name .. ']'
                 end
               end
 
               return msg
             end,
-            icon = " ",
+            --icon = " ",
             --fmt = capitalize,
             separator = { right = '' }
           },
